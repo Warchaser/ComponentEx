@@ -1,19 +1,29 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+boolean isApp = module_tensorflow_app.toBoolean()
+
+if (module_tensorflow_app.toBoolean()) {
+    plugins.apply('com.android.application')
+} else {
+    plugins.apply('com.android.library')
 }
+
+plugins.apply('kotlin-android')
 
 android {
     compileSdk compile_sdk_version.toInteger()
 
     defaultConfig {
-        applicationId "com.warchaser.componentex"
+
+        if(isApp){
+            applicationId "com.warchaser.tensorflow"
+        }
+
         minSdk min_sdk_version.toInteger()
         targetSdk target_sdk_version.toInteger()
         versionCode version_code.toInteger()
         versionName version_name.toString()
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {

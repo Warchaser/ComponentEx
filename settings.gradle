@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComponentEx"
 include ':app'
+include ':Tensorflow'
+include ':CommonUtils'
